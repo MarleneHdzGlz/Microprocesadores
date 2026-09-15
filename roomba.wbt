@@ -1,0 +1,111 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.01727257524958096 -0.00770332800065408 -0.9998211424459688 3.9803177441323747
+  position 0.2838311580876927 -0.30472577992841676 0.08309556705021406
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+}
+Robot {
+  translation 0.02 0 0.02
+  children [
+    Solid {
+      translation 0.04 0 -0.01
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Sphere {
+            radius 0.009
+          }
+        }
+      ]
+      name "rueda loca"
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+      }
+      device [
+        RotationalMotor {
+          name "motor de rueda izquierda"
+          maxVelocity 12
+        }
+      ]
+      endPoint Solid {
+        translation -0.01 -0.05 -0.01
+        rotation 1 0 0 1.5708
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.005
+              radius 0.01
+            }
+          }
+        ]
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+      }
+      device [
+        RotationalMotor {
+          name "motor de rueda izquierda"
+          maxVelocity 12
+        }
+      ]
+      endPoint Solid {
+        translation -0.01 0.05 -0.01
+        rotation 1 0 0 1.5708
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.005
+              radius 0.01
+            }
+          }
+        ]
+        name "solid(1)"
+      }
+    }
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.792157 0.87451 1
+        roughness 1
+        metalness 0
+      }
+      geometry Cylinder {
+        height 0.03
+        radius 0.05
+      }
+    }
+  ]
+  name "roomba"
+  boundingObject Cylinder {
+    height 0.05
+    radius 0.05
+  }
+  physics Physics {
+    density -1
+    mass 2.5
+  }
+}
